@@ -31,7 +31,7 @@ for (let index = 0; index <= 210; index+=15) {
 }
 console.log(walls)
 let score = 0 
-let lose = false
+
 let timer = 0
 
 let snake = {
@@ -51,22 +51,25 @@ let snake = {
             sqrEls[this.tailPosition.pop()].style.backgroundColor=''
             this.headPosition-- 
            
-            // if (walls.includes(this.headPosition)) lose() 
+            if (walls.includes(this.headPosition)) lose() 
         }
         if (this.direction ==='r') {
             this.tailPosition.unshift(this.headPosition)
             sqrEls[this.tailPosition.pop()].style.backgroundColor=''
             this.headPosition++
+            if (walls.includes(this.headPosition)) lose()
         }
         if (this.direction ==='u'){
             this.tailPosition.unshift(this.headPosition)
             sqrEls[this.tailPosition.pop()].style.backgroundColor=''
             this.headPosition-=15
+            if (walls.includes(this.headPosition)) lose()
         }
         if (this.direction ==='d'){
             this.tailPosition.unshift(this.headPosition)
             sqrEls[this.tailPosition.pop()].style.backgroundColor=''
             this.headPosition+=15
+            if (walls.includes(this.headPosition)) lose()
         }
         }
     }
@@ -93,7 +96,12 @@ timeInterval = setInterval(startTime, 700)
 // snake.direction = 'u'
 // snake.grow()
 // console.log(snake.tailPosition)
+const textEl = document.querySelector('h2') 
+function lose(){
+    clearInterval(timeInterval)
+    textEl.textContent = 'lost hehexd'
 
+}
 
 /*------------------------ Cached Element References ------------------------*/
 // const boardEl = document.querySelector('#board')
