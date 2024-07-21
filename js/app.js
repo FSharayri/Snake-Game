@@ -48,7 +48,6 @@ let snake = {
         console.log(snake.headPosition)
         if (this.direction ==='l'){
             this.tailPosition.unshift(this.headPosition)
-            // this.tailPosition.pop()
             sqrEls[this.tailPosition.pop()].style.backgroundColor=''
             this.headPosition-- 
            
@@ -56,17 +55,17 @@ let snake = {
         }
         if (this.direction ==='r') {
             this.tailPosition.unshift(this.headPosition)
-            this.tailPosition.pop()
+            sqrEls[this.tailPosition.pop()].style.backgroundColor=''
             this.headPosition++
         }
         if (this.direction ==='u'){
             this.tailPosition.unshift(this.headPosition)
-            this.tailPosition.pop()
+            sqrEls[this.tailPosition.pop()].style.backgroundColor=''
             this.headPosition-=15
         }
         if (this.direction ==='d'){
             this.tailPosition.unshift(this.headPosition)
-            this.tailPosition.pop()
+            sqrEls[this.tailPosition.pop()].style.backgroundColor=''
             this.headPosition+=15
         }
         }
