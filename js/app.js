@@ -20,7 +20,16 @@
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-
+let walls =[]
+for (let index = 0; index < 15; index++) {
+    walls.push(index)
+    walls.push(index+210)
+}
+for (let index = 0; index <= 210; index+=15) {
+    walls.push(index,index+14)
+    
+}
+console.log(walls)
 let score = 0 
 let lose = false
 let timer = 0
@@ -40,6 +49,7 @@ let snake = {
             this.tailPosition.unshift(this.headPosition)
             this.tailPosition.pop()
             this.headPosition-- 
+            // if (walls.includes(this.headPosition)) lose() 
         }
         if (this.direction ==='r') {
             this.tailPosition.unshift(this.headPosition)
@@ -58,8 +68,9 @@ let snake = {
         }
         }
     }
-    
+    snake.move()
 
+const timeInterval = setInterval(snake.move, 1000)
 
 // console.log(snake.tailPosition.length)
 // snake.grow()
@@ -87,13 +98,13 @@ const sqrEls = document.querySelectorAll('.sqr')
 
 
 /*-------------------------------- Functions --------------------------------*/
+
+
 snake.grow()
 
-snake.move()
-snake.move()
-snake.direction ='u'
-snake.move()
-snake.move()
+
+
+
 sqrEls.forEach((sqrEl) => {
 
     snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundColor= 'red'})
