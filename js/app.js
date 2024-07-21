@@ -45,10 +45,13 @@ let snake = {
         this.tailPosition.push(this.tailPosition.at(-1))
     },
     move(){
+        console.log(snake.headPosition)
         if (this.direction ==='l'){
             this.tailPosition.unshift(this.headPosition)
-            this.tailPosition.pop()
+            // this.tailPosition.pop()
+            sqrEls[this.tailPosition.pop()].style.backgroundColor=''
             this.headPosition-- 
+           
             // if (walls.includes(this.headPosition)) lose() 
         }
         if (this.direction ==='r') {
@@ -68,9 +71,16 @@ let snake = {
         }
         }
     }
-    snake.move()
 
-const timeInterval = setInterval(snake.move, 1000)
+
+let timeInterval 
+
+const startTime = function(){
+    snake.move()
+    console.log('first')
+    renderSnake()
+}
+timeInterval = setInterval(startTime, 1000)
 
 // console.log(snake.tailPosition.length)
 // snake.grow()
@@ -100,16 +110,20 @@ const sqrEls = document.querySelectorAll('.sqr')
 /*-------------------------------- Functions --------------------------------*/
 
 
-snake.grow()
-
-
-
-
+// snake.grow()
+// snake.move()
+// snake.grow()
+// snake.move()
+// snake.move()
+// snake.move()
+// snake.move()
+// snake.move()
+renderSnake = function(){
 sqrEls.forEach((sqrEl) => {
 
     snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundColor= 'red'})
         if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundColor= 'darkred'}
-});
+});}
 
 
 /*----------------------------- Event Listeners -----------------------------*/
