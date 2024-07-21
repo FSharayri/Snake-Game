@@ -70,11 +70,23 @@ let snake = {
 
 
 /*------------------------ Cached Element References ------------------------*/
+// const boardEl = document.querySelector('#board')
+// let innerHtml=''
+// for(let i =0; i<225;i++){
+// innerHtml+= `<div class = "sqr" id="${i}"> ${i}</div>`
 
+// }
+// boardEl.innerHTML=innerHtml
+const sqrEls = document.querySelectorAll('.sqr')
 
 
 /*-------------------------------- Functions --------------------------------*/
 
+sqrEls.forEach((sqrEl) => {
+
+    snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundColor= 'red'})
+        if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundColor= 'darkred'}
+});
 
 
 /*----------------------------- Event Listeners -----------------------------*/

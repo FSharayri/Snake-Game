@@ -10,6 +10,15 @@ body{
     
 
 }
-h1 {
-    padding-top: 20vh;
+#board{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sqr {
+    width:6.667vh; /*this is 100% of the screen width divided by 15 which 
+    is the row length we're creating initially*/
+    aspect-ratio: 1/1;
 }
