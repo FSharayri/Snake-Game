@@ -79,7 +79,7 @@ const startTime = function(){
     console.log('first')
     renderSnake()
 }
-timeInterval = setInterval(startTime, 1000)
+timeInterval = setInterval(startTime, 700)
 
 // console.log(snake.tailPosition.length)
 // snake.grow()
@@ -119,10 +119,25 @@ const sqrEls = document.querySelectorAll('.sqr')
 // snake.move()
 renderSnake = function(){
 sqrEls.forEach((sqrEl) => {
-
-    snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundColor= 'red'})
-        if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundColor= 'darkred'}
+    sqrEl.textContent=''
+    snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundColor= 'lightgreen'})
+        if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundColor= 'darkgreen'}
 });}
+
+let bodyEl = document.querySelector('body')
+bodyEl.addEventListener('keydown', handleKeyDown)
+
+function handleKeyDown(key){
+    if (key.key ==='ArrowUp')
+        snake.direction='u'
+    if (key.key ==='ArrowDown')
+        snake.direction='d'
+    if (key.key ==='ArrowLeft')
+        snake.direction='l'
+    if (key.key ==='ArrowRight')
+        snake.direction='r'
+    
+}
 
 
 /*----------------------------- Event Listeners -----------------------------*/
