@@ -33,7 +33,7 @@ let snake = {
     direction : 'l', //this is the direction the snake will be moving initialized to left
     // this grow function will be called whenever the snake eats a piece, and it depends on the direction element in the snake object, which will be manipulated later
     grow : function(){
-        
+        this.tailPosition.push(this.tailPosition.at(-1))
     },
     move(){
         if (this.direction ==='l'){
@@ -42,16 +42,19 @@ let snake = {
             this.headPosition-- 
         }
         if (this.direction ==='r') {
+            this.tailPosition.unshift(this.headPosition)
+            this.tailPosition.pop()
             this.headPosition++
-            this.tailPosition = this.tailPosition.map(piece => piece+1)
         }
         if (this.direction ==='u'){
+            this.tailPosition.unshift(this.headPosition)
+            this.tailPosition.pop()
             this.headPosition-=15
-            this.tailPosition = this.tailPosition.map(piece => piece-15)
         }
         if (this.direction ==='d'){
+            this.tailPosition.unshift(this.headPosition)
+            this.tailPosition.pop()
             this.headPosition+=15
-            this.tailPosition = this.tailPosition.map(piece => piece+15)
         }
         }
     }
@@ -85,11 +88,12 @@ const sqrEls = document.querySelectorAll('.sqr')
 
 /*-------------------------------- Functions --------------------------------*/
 snake.grow()
-// snake.direction = 'u'
+
 snake.move()
 snake.move()
+snake.direction ='u'
 snake.move()
-snake.grow()
+snake.move()
 sqrEls.forEach((sqrEl) => {
 
     snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundColor= 'red'})
