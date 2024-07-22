@@ -47,32 +47,47 @@ let snake = {
     move(){
         console.log(snake.headPosition)
         if (this.direction ==='l'){
-            this.tailPosition.unshift(this.headPosition)
-            sqrEls[this.tailPosition.pop()].style.backgroundColor=''
-            this.headPosition-- 
-           
-            if (walls.includes(this.headPosition)) lose() 
+            if (walls.includes(this.headPosition-1)) {   
+                lose() 
+            }
+            else {
+                this.tailPosition.unshift(this.headPosition)
+                sqrEls[this.tailPosition.pop()].style.backgroundColor=''
+                this.headPosition-- 
+            }
         }
         if (this.direction ==='r') {
-            this.tailPosition.unshift(this.headPosition)
-            sqrEls[this.tailPosition.pop()].style.backgroundColor=''
-            this.headPosition++
-            if (walls.includes(this.headPosition)) lose()
+            if (walls.includes(this.headPosition+1)) {   
+                lose()  
+            }
+            else {
+                this.tailPosition.unshift(this.headPosition)
+                sqrEls[this.tailPosition.pop()].style.backgroundColor=''
+                this.headPosition++
+            }
         }
         if (this.direction ==='u'){
-            this.tailPosition.unshift(this.headPosition)
-            sqrEls[this.tailPosition.pop()].style.backgroundColor=''
-            this.headPosition-=15
-            if (walls.includes(this.headPosition)) lose()
+            if (walls.includes(this.headPosition-15)) {   
+                lose() 
+            }
+            else {
+                this.tailPosition.unshift(this.headPosition)
+                sqrEls[this.tailPosition.pop()].style.backgroundColor=''
+                this.headPosition-=15
+            }
         }
         if (this.direction ==='d'){
-            this.tailPosition.unshift(this.headPosition)
-            sqrEls[this.tailPosition.pop()].style.backgroundColor=''
-            this.headPosition+=15
-            if (walls.includes(this.headPosition)) lose()
-        }
+            if (walls.includes(this.headPosition+15)) {   
+                lose() 
+            }
+            else {
+                this.tailPosition.unshift(this.headPosition)
+                sqrEls[this.tailPosition.pop()].style.backgroundColor=''
+                this.headPosition+=15
+            }
         }
     }
+}
 
 
 let timeInterval 
@@ -96,7 +111,7 @@ timeInterval = setInterval(startTime, 700)
 // snake.direction = 'u'
 // snake.grow()
 // console.log(snake.tailPosition)
-const textEl = document.querySelector('h2') 
+
 function lose(){
     clearInterval(timeInterval)
     textEl.textContent = 'lost hehexd'
@@ -111,7 +126,9 @@ function lose(){
 
 // }
 // boardEl.innerHTML=innerHtml
+const textEl = document.querySelector('h2')
 const sqrEls = document.querySelectorAll('.sqr')
+const bodyEl = document.querySelector('body')
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -132,8 +149,7 @@ sqrEls.forEach((sqrEl) => {
         if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundColor= 'darkgreen'}
 });}
 
-let bodyEl = document.querySelector('body')
-bodyEl.addEventListener('keydown', handleKeyDown)
+
 
 function handleKeyDown(key){
     if (key.key ==='ArrowUp')
@@ -152,3 +168,4 @@ function handleKeyDown(key){
 
 
 
+bodyEl.addEventListener('keydown', handleKeyDown)
