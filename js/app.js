@@ -22,12 +22,19 @@
 const boardEl = document.querySelector('#board')
 let innerHtml=''
 for(let i =0; i<400;i++){
-innerHtml+= `<div class = "sqr" id="${i}"></div>`
+let div= document.createElement(`div`)
+div.className = "sqr"
+div.id = `${i}`
+boardEl.appendChild(div)
 }
-boardEl.innerHTML=innerHtml
+
 const textEl = document.querySelector('h2')
 const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
+
+
+
+
 /*-------------------------------- Constants --------------------------------*/
 
 const initialPosition = [190,191,192,193]
@@ -59,14 +66,14 @@ const snake = {
         this.tailPosition.push(this.tailPosition.at(-1))
     },
     move(){
-        console.log(snake.headPosition)
+        // console.log(snake.headPosition)
         if (this.direction ==='l'){
             if (walls.includes(this.headPosition-1) || this.tailPosition.includes(this.headPosition-1)) {   
                 lose() 
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
-                sqrEls[this.tailPosition.pop()].style.backgroundColor=''
+                sqrEls[this.tailPosition.pop()].style.backgroundImage=''
                 this.headPosition-- 
             }
         }
@@ -76,7 +83,7 @@ const snake = {
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
-                sqrEls[this.tailPosition.pop()].style.backgroundColor=''
+                sqrEls[this.tailPosition.pop()].style.backgroundImage=''
                 this.headPosition++
             }
         }
@@ -86,7 +93,7 @@ const snake = {
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
-                sqrEls[this.tailPosition.pop()].style.backgroundColor=''
+                sqrEls[this.tailPosition.pop()].style.backgroundImage=''
                 this.headPosition-=20
             }
         }
@@ -96,7 +103,7 @@ const snake = {
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
-                sqrEls[this.tailPosition.pop()].style.backgroundColor=''
+                sqrEls[this.tailPosition.pop()].style.backgroundImage=''
                 this.headPosition+=20
             }
         }
@@ -108,15 +115,15 @@ const snake = {
 
 function startTime(){
     snake.move()
-    console.log('first')
+    // console.log('first')
     renderSnake()
 }
 
 function renderSnake(){
     sqrEls.forEach((sqrEl) => {
         sqrEl.textContent=''
-        snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundColor= 'lightgreen'})
-            if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundColor= 'darkgreen'}
+        snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"})
+            if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"}
     })
 }
 
@@ -135,7 +142,9 @@ function lose(){
     clearInterval(timeInterval)
     textEl.textContent = 'lost hehexd'
 }
+function renderApple(){
 
+}
 
 /*----------------------------- Event Listeners -----------------------------*/
 
