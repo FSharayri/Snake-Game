@@ -14,12 +14,20 @@
 //6) Handle a player pressing a button with a `buttonPressHandle` function.
 
 //7) Create Reset functionality.
+// const boardEl = document.querySelector('#board')
+// let innerHtml=''
+// for(let i =0; i<225;i++){
+// innerHtml+= `<div class = "sqr" id="${i}"> ${i}</div>`
+// }
+// boardEl.innerHTML=innerHtml
 
 /*-------------------------------- Constants --------------------------------*/
 
-
+const initialPosition = [100,101,102,103]
 
 /*---------------------------- Variables (state) ----------------------------*/
+let speed = 900
+let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 for (let index = 0; index < 15; index++) {
     walls.push(index)
@@ -29,15 +37,14 @@ for (let index = 0; index <= 210; index+=15) {
     walls.push(index,index+14)
     
 }
-console.log(walls)
-let score = 0 
 
+let score = 0 
 let timer = 0
 
-let snake = {
-    headPosition :100,  // starting square for the snakes head
+const snake = {
+    headPosition :initialPosition[0],  // starting square for the snakes head
      // starting position of snakes body
-    tailPosition : [101,102,103],
+    tailPosition : initialPosition.splice(1),
     //bodyLength : 1 +this.tailPosition.length, // property to keep track of snakes length as it grows
     direction : 'l', //this is the direction the snake will be moving initialized to left
     // this grow function will be called whenever the snake eats a piece, and it depends on the direction element in the snake object, which will be manipulated later
@@ -90,45 +97,9 @@ let snake = {
 }
 
 
-let timeInterval 
-
-const startTime = function(){
-    snake.move()
-    console.log('first')
-    renderSnake()
-}
-timeInterval = setInterval(startTime, 700)
-
-// console.log(snake.tailPosition.length)
-// snake.grow()
-// snake.grow()
-// console.dir(snake)
-// console.log(snake.tailPosition.length)
-// snake.direction = 'r'
-// snake.grow()
-// snake.grow()
-// console.log(snake.tailPosition)
-// snake.direction = 'u'
-// snake.grow()
-// console.log(snake.tailPosition)
-snake.grow() 
-snake.grow()
-snake.grow()
-snake.grow()
-function lose(){
-    clearInterval(timeInterval)
-    textEl.textContent = 'lost hehexd'
-
-}
 
 /*------------------------ Cached Element References ------------------------*/
-// const boardEl = document.querySelector('#board')
-// let innerHtml=''
-// for(let i =0; i<225;i++){
-// innerHtml+= `<div class = "sqr" id="${i}"> ${i}</div>`
 
-// }
-// boardEl.innerHTML=innerHtml
 const textEl = document.querySelector('h2')
 const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
@@ -137,22 +108,19 @@ const bodyEl = document.querySelector('body')
 /*-------------------------------- Functions --------------------------------*/
 
 
-// snake.grow()
-// snake.move()
-// snake.grow()
-// snake.move()
-// snake.move()
-// snake.move()
-// snake.move()
-// snake.move()
-renderSnake = function(){
-sqrEls.forEach((sqrEl) => {
-    sqrEl.textContent=''
-    snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundColor= 'lightgreen'})
-        if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundColor= 'darkgreen'}
-});}
+function startTime(){
+    snake.move()
+    console.log('first')
+    renderSnake()
+}
 
-
+function renderSnake(){
+    sqrEls.forEach((sqrEl) => {
+        sqrEl.textContent=''
+        snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundColor= 'lightgreen'})
+            if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundColor= 'darkgreen'}
+    })
+}
 
 function handleKeyDown(key){
     if (key.key ==='ArrowUp' && snake.direction!=='d' )
@@ -162,13 +130,17 @@ function handleKeyDown(key){
     if (key.key ==='ArrowLeft' && snake.direction!=='r')
         snake.direction='l'
     if (key.key ==='ArrowRight' && snake.direction!=='l')
-        snake.direction='r'
-    
+        snake.direction='r'  
 }
 
-sqrEls.forEach(sqr => {if(walls.includes(parseInt(sqr.id))) sqr.style.backgroundColor='black'})
+function lose(){
+    clearInterval(timeInterval)
+    textEl.textContent = 'lost hehexd'
+}
+
+ 
 /*----------------------------- Event Listeners -----------------------------*/
 
-
+sqrEls.forEach(sqr => {if(walls.includes(parseInt(sqr.id))) sqr.style.backgroundColor='black'})
 
 bodyEl.addEventListener('keydown', handleKeyDown)
