@@ -47,7 +47,7 @@ let snake = {
     move(){
         console.log(snake.headPosition)
         if (this.direction ==='l'){
-            if (walls.includes(this.headPosition-1)) {   
+            if (walls.includes(this.headPosition-1) || this.tailPosition.includes(this.headPosition-1)) {   
                 lose() 
             }
             else {
@@ -57,7 +57,7 @@ let snake = {
             }
         }
         if (this.direction ==='r') {
-            if (walls.includes(this.headPosition+1)) {   
+            if (walls.includes(this.headPosition+1) || this.tailPosition.includes(this.headPosition+1)) {   
                 lose()  
             }
             else {
@@ -67,7 +67,7 @@ let snake = {
             }
         }
         if (this.direction ==='u'){
-            if (walls.includes(this.headPosition-15)) {   
+            if (walls.includes(this.headPosition-15) || this.tailPosition.includes(this.headPosition-15)) {   
                 lose() 
             }
             else {
@@ -77,7 +77,7 @@ let snake = {
             }
         }
         if (this.direction ==='d'){
-            if (walls.includes(this.headPosition+15)) {   
+            if (walls.includes(this.headPosition+15) || this.tailPosition.includes(this.headPosition+15)) {   
                 lose() 
             }
             else {
@@ -111,7 +111,10 @@ timeInterval = setInterval(startTime, 700)
 // snake.direction = 'u'
 // snake.grow()
 // console.log(snake.tailPosition)
-
+snake.grow() 
+snake.grow()
+snake.grow()
+snake.grow()
 function lose(){
     clearInterval(timeInterval)
     textEl.textContent = 'lost hehexd'
@@ -152,7 +155,7 @@ sqrEls.forEach((sqrEl) => {
 
 
 function handleKeyDown(key){
-    if (key.key ==='ArrowUp')
+    if (key.key ==='ArrowUp' )
         snake.direction='u'
     if (key.key ==='ArrowDown')
         snake.direction='d'
