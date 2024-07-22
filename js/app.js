@@ -33,7 +33,7 @@ const bodyEl = document.querySelector('body')
 const initialPosition = [190,191,192,193]
 
 /*---------------------------- Variables (state) ----------------------------*/
-let speed = 600
+let speed = 900
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 for (let index = 0; index < 20; index++) {
