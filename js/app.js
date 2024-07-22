@@ -14,27 +14,34 @@
 //6) Handle a player pressing a button with a `buttonPressHandle` function.
 
 //7) Create Reset functionality.
-// const boardEl = document.querySelector('#board')
-// let innerHtml=''
-// for(let i =0; i<225;i++){
-// innerHtml+= `<div class = "sqr" id="${i}"> ${i}</div>`
-// }
-// boardEl.innerHTML=innerHtml
 
+
+/*------------------------ Cached Element References ------------------------*/
+
+
+const boardEl = document.querySelector('#board')
+let innerHtml=''
+for(let i =0; i<400;i++){
+innerHtml+= `<div class = "sqr" id="${i}"></div>`
+}
+boardEl.innerHTML=innerHtml
+const textEl = document.querySelector('h2')
+const sqrEls = document.querySelectorAll('.sqr')
+const bodyEl = document.querySelector('body')
 /*-------------------------------- Constants --------------------------------*/
 
-const initialPosition = [100,101,102,103]
+const initialPosition = [190,191,192,193]
 
 /*---------------------------- Variables (state) ----------------------------*/
-let speed = 300
+let speed = 600
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
-for (let index = 0; index < 15; index++) {
+for (let index = 0; index < 20; index++) {
     walls.push(index)
-    walls.push(index+210)
+    walls.push(index+380)
 }
-for (let index = 0; index <= 210; index+=15) {
-    walls.push(index,index+14)
+for (let index = 0; index <= 400; index+=20) {
+    walls.push(index,index+19)
     
 }
 
@@ -74,39 +81,30 @@ const snake = {
             }
         }
         if (this.direction ==='u'){
-            if (walls.includes(this.headPosition-15) || this.tailPosition.includes(this.headPosition-15)) {   
+            if (walls.includes(this.headPosition-20) || this.tailPosition.includes(this.headPosition-20)) {   
                 lose() 
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
                 sqrEls[this.tailPosition.pop()].style.backgroundColor=''
-                this.headPosition-=15
+                this.headPosition-=20
             }
         }
         if (this.direction ==='d'){
-            if (walls.includes(this.headPosition+15) || this.tailPosition.includes(this.headPosition+15)) {   
+            if (walls.includes(this.headPosition+20) || this.tailPosition.includes(this.headPosition+20)) {   
                 lose() 
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
                 sqrEls[this.tailPosition.pop()].style.backgroundColor=''
-                this.headPosition+=15
+                this.headPosition+=20
             }
         }
     }
 }
 
 
-
-/*------------------------ Cached Element References ------------------------*/
-
-const textEl = document.querySelector('h2')
-const sqrEls = document.querySelectorAll('.sqr')
-const bodyEl = document.querySelector('body')
-
-
 /*-------------------------------- Functions --------------------------------*/
-
 
 function startTime(){
     snake.move()
@@ -138,9 +136,10 @@ function lose(){
     textEl.textContent = 'lost hehexd'
 }
 
- 
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 sqrEls.forEach(sqr => {if(walls.includes(parseInt(sqr.id))) sqr.style.backgroundColor='black'})
 
 bodyEl.addEventListener('keydown', handleKeyDown)
+for (let i =0;i<20;i++) snake.grow()

@@ -21,7 +21,9 @@ body{
 }
 
 .sqr {
-    width:6.4%; /*this is 100% of the board element divided by 15 which 
+    width:5%; /*this is 100% of the board element divided by 20 which 
     is the row length we're creating initially*/
     aspect-ratio: 1/1;
+    align-items: center;
+    justify-content: center;
 }
