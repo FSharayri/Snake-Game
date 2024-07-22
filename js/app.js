@@ -155,13 +155,13 @@ sqrEls.forEach((sqrEl) => {
 
 
 function handleKeyDown(key){
-    if (key.key ==='ArrowUp' )
+    if (key.key ==='ArrowUp' && snake.direction!=='d' )
         snake.direction='u'
-    if (key.key ==='ArrowDown')
+    if (key.key ==='ArrowDown' && snake.direction!=='u')
         snake.direction='d'
-    if (key.key ==='ArrowLeft')
+    if (key.key ==='ArrowLeft' && snake.direction!=='r')
         snake.direction='l'
-    if (key.key ==='ArrowRight')
+    if (key.key ==='ArrowRight' && snake.direction!=='l')
         snake.direction='r'
     
 }
