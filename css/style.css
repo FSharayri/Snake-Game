@@ -16,10 +16,12 @@ body{
     justify-content: space-evenly;
     align-items: center;
     background-color: rgb(49, 49, 49);
+    width: 80vh;
+    aspect-ratio: 1/1;
 }
 
 .sqr {
-    width:6.4vw; /*this is 100% of the screen width divided by 15 which 
+    width:6.4%; /*this is 100% of the board element divided by 15 which 
     is the row length we're creating initially*/
     aspect-ratio: 1/1;
 }
