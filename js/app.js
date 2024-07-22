@@ -26,7 +26,7 @@
 const initialPosition = [100,101,102,103]
 
 /*---------------------------- Variables (state) ----------------------------*/
-let speed = 900
+let speed = 300
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 for (let index = 0; index < 15; index++) {
