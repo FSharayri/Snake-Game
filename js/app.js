@@ -166,7 +166,7 @@ function handleKeyDown(key){
     
 }
 
-
+sqrEls.forEach(sqr => {if(walls.includes(parseInt(sqr.id))) sqr.style.backgroundColor='black'})
 /*----------------------------- Event Listeners -----------------------------*/
 
 
