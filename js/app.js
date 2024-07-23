@@ -20,8 +20,10 @@
 
 
 const boardEl = document.querySelector('#board')
-let innerHtml=''
-for(let i =0; i<400;i++){
+
+let boardlength = 20
+let boardSize = boardlength**2
+for(let i =0; i<boardSize;i++){
 let div= document.createElement(`div`)
 div.className = "sqr"
 div.id = `${i}`
@@ -43,12 +45,12 @@ const initialPosition = [190,191,192,193]
 let speed = 400
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
-for (let index = 0; index < 20; index++) {
+for (let index = 0; index < boardlength; index++) {
     walls.push(index)
-    walls.push(index+380)
+    walls.push(index+boardSize-boardlength)
 }
-for (let index = 0; index <= 400; index+=20) {
-    walls.push(index,index+19)
+for (let index = 0; index <= boardSize; index+=boardlength) {
+    walls.push(index,index+boardlength-1)
     
 }
 
