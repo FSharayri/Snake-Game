@@ -1,3 +1,6 @@
+:root {
+    --boardWidth : 5%; 
+}
 body{
     display: flex;
     background-color: rgb(60, 60, 60);
@@ -21,7 +24,7 @@ body{
 }
 
 .sqr {
-    width:5%; /*this is 100% of the board element divided by 20 which 
+    width:  var(--boardWidth); /*this is 100% of the board element divided by 20 which 
     is the row length we're creating initially*/
     aspect-ratio: 1/1;
     align-items: center;

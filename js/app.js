@@ -21,7 +21,12 @@
 
 const boardEl = document.querySelector('#board')
 
+let r = document.querySelector(':root');
+let rs = getComputedStyle(r);
+
 let boardlength = 20
+let boardWidthCss= 100/boardlength
+r.style.setProperty('--boardWidth', `${boardWidthCss}%`);
 let boardSize = boardlength**2
 for(let i =0; i<boardSize;i++){
 let div= document.createElement(`div`)
@@ -33,13 +38,13 @@ boardEl.appendChild(div)
 const textEl = document.querySelector('h2')
 const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
-
+let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
 
 
 
 /*-------------------------------- Constants --------------------------------*/
 
-const initialPosition = [190,191,192,193]
+const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,snakeInitialPos+3]
 
 /*---------------------------- Variables (state) ----------------------------*/
 let speed = 400
@@ -90,23 +95,23 @@ const snake = {
             }
         }
         if (this.direction ==='u'){
-            if (walls.includes(this.headPosition-20) || this.tailPosition.includes(this.headPosition-20)) {   
+            if (walls.includes(this.headPosition-boardlength) || this.tailPosition.includes(this.headPosition-boardlength)) {   
                 lose() 
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
                 sqrEls[this.tailPosition.pop()].style.backgroundImage=''
-                this.headPosition-=20
+                this.headPosition-=boardlength
             }
         }
         if (this.direction ==='d'){
-            if (walls.includes(this.headPosition+20) || this.tailPosition.includes(this.headPosition+20)) {   
+            if (walls.includes(this.headPosition+boardlength) || this.tailPosition.includes(this.headPosition+boardlength)) {   
                 lose() 
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
                 sqrEls[this.tailPosition.pop()].style.backgroundImage=''
-                this.headPosition+=20
+                this.headPosition+=boardlength
             }
         }
     }
