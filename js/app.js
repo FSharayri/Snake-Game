@@ -40,7 +40,7 @@ const bodyEl = document.querySelector('body')
 const initialPosition = [190,191,192,193]
 
 /*---------------------------- Variables (state) ----------------------------*/
-let speed = 900
+let speed = 400
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 for (let index = 0; index < 20; index++) {
@@ -123,7 +123,7 @@ function renderSnake(){
     sqrEls.forEach((sqrEl) => {
         sqrEl.textContent=''
         snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"})
-            if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"}
+            if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadMoving.png')"}
     })
 }
 
@@ -151,4 +151,4 @@ function renderApple(){
 sqrEls.forEach(sqr => {if(walls.includes(parseInt(sqr.id))) sqr.style.backgroundColor='black'})
 
 bodyEl.addEventListener('keydown', handleKeyDown)
-for (let i =0;i<20;i++) snake.grow()
+// for (let i =0;i<20;i++) snake.grow()
