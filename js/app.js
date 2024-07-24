@@ -49,7 +49,7 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let speed = 600
+let speed = 800
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
@@ -143,6 +143,7 @@ function startTime(){
     renderSnake()
     snakeEatsApple=snake.headPosition === appleLocation
     if (snakeEatsApple){
+        sqrEls[appleLocation].style.backgroundColor = ''
         renderApple()
         snake.grow()
     }
