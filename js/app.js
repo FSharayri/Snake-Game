@@ -18,21 +18,22 @@
 
 /*------------------------ Cached Element References ------------------------*/
 
-
-const boardEl = document.querySelector('#board')
+let boardlength = 20
+let boardWidthCss= 100/boardlength
+let boardSize = boardlength**2
 
 let r = document.querySelector(':root');
 let rs = getComputedStyle(r);
 
-let boardlength = 20
-let boardWidthCss= 100/boardlength
 r.style.setProperty('--boardWidth', `${boardWidthCss}%`);
-let boardSize = boardlength**2
+
+
+const boardEl = document.querySelector('#board')
 for(let i =0; i<boardSize;i++){
-let div= document.createElement(`div`)
-div.className = "sqr"
-div.id = `${i}`
-boardEl.appendChild(div)
+    let div= document.createElement(`div`)
+    div.className = "sqr"
+    div.id = `${i}`
+    boardEl.appendChild(div)
 }
 
 const textEl = document.querySelector('h2')
@@ -119,11 +120,13 @@ const snake = {
 
 
 /*-------------------------------- Functions --------------------------------*/
-
+renderApple()
 function startTime(){
     snake.move()
     // console.log('first')
     renderSnake()
+    
+    
 }
 
 function renderSnake(){
@@ -132,6 +135,7 @@ function renderSnake(){
         snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"})
             if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadMoving.png')"}
     })
+
 }
 
 function handleKeyDown(key){
@@ -148,9 +152,21 @@ function handleKeyDown(key){
 function lose(){
     clearInterval(timeInterval)
     textEl.textContent = 'lost hehexd'
+    sqrEls.forEach(sqrEl=>{if (parseInt(sqrEl.id)=== snake.headPosition) sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadLost.png')"})
 }
+
 function renderApple(){
 
+    let appleLocation = parseInt(Math.random()*400)
+    while(walls.includes(appleLocation) || snake.headPosition ===appleLocation || snake.tailPosition.includes(appleLocation)){
+        appleLocation = parseInt(Math.random()*400)
+    }
+    sqrEls.forEach(sqr=>{ 
+        if(parseInt(sqr.id) ===appleLocation)
+            sqr.style.backgroundColor ='red'
+    })
+
+    
 }
 
 /*----------------------------- Event Listeners -----------------------------*/
