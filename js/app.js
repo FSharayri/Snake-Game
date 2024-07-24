@@ -48,7 +48,7 @@ let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
 const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,snakeInitialPos+3]
 
 /*---------------------------- Variables (state) ----------------------------*/
-let score = 0
+let playerScore = 0
 let speed = 600
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
@@ -141,13 +141,14 @@ function startTime(){
     snake.move()
     // console.log('first')
     renderSnake()
-    snakeEatsApple= snake.headPosition === appleLocation
+    snakeEatsApple=snake.headPosition === appleLocation
     if (snakeEatsApple){
-        score+=1
+        playerScore++
         sqrEls[appleLocation].style.backgroundColor = ''
         renderApple()
         snake.grow()
     }
+    scoreEl.textContent = `Score: ${playerScore}`
 }
 
 function renderSnake(){
