@@ -35,7 +35,7 @@ for(let i =0; i<boardSize;i++){
     div.id = `${i}`
     boardEl.appendChild(div)
 }
-
+const scoreEl = document.querySelector('#currentScore')
 const textEl = document.querySelector('h2')
 const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
@@ -48,8 +48,8 @@ let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
 const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,snakeInitialPos+3]
 
 /*---------------------------- Variables (state) ----------------------------*/
-
-let speed = 800
+let score = 0
+let speed = 600
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
@@ -141,8 +141,9 @@ function startTime(){
     snake.move()
     // console.log('first')
     renderSnake()
-    snakeEatsApple=snake.headPosition === appleLocation
+    snakeEatsApple= snake.headPosition === appleLocation
     if (snakeEatsApple){
+        score+=1
         sqrEls[appleLocation].style.backgroundColor = ''
         renderApple()
         snake.grow()
