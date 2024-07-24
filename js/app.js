@@ -39,6 +39,7 @@ const scoreEl = document.querySelector('#currentScore')
 const textEl = document.querySelector('h2')
 const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
+const restartEl = document.querySelector('#restart')
 let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
 
 
@@ -49,7 +50,7 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 
 /*---------------------------- Variables (state) ----------------------------*/
 let playerScore = 0
-let speed = 600
+let speed = 800
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
@@ -69,7 +70,7 @@ let timer = 0
 const snake = {
     headPosition :initialPosition[0],  // starting square for the snakes head
      // starting position of snakes body
-    tailPosition : initialPosition.splice(1),
+    tailPosition : initialPosition.slice(1),
     //bodyLength : 1 +this.tailPosition.length, // property to keep track of snakes length as it grows
     direction : 'l', //this is the direction the snake will be moving initialized to left
     // this grow function will be called whenever the snake eats a piece, and it depends on the direction element in the snake object, which will be manipulated later
@@ -124,20 +125,23 @@ const snake = {
 
 /*-------------------------------- Functions --------------------------------*/
 function renderApple(){
-
     appleLocation = parseInt(Math.random()*400)
     while(walls.includes(appleLocation) || snake.headPosition ===appleLocation || snake.tailPosition.includes(appleLocation)){
         appleLocation = parseInt(Math.random()*400)
     }
-    sqrEls.forEach(sqr=>{ 
-        if(parseInt(sqr.id) ===appleLocation)
-            sqr.style.backgroundColor ='red'
-    })
-    appleOnBoard = true
-    console.log(appleLocation)  
+    // sqrEls.forEach(sqr=>{ 
+    //     if(parseInt(sqr.id) ===appleLocation)
+    //         sqr.style.backgroundColor ='red'
+    //     else 
+    //        sqr.style.backgroundColor =''
+    // })
+    appleOnBoard = true 
 }
-renderApple()
+
+
+
 function startTime(){
+    if (! appleOnBoard) renderApple() 
     snake.move()
     // console.log('first')
     renderSnake()
@@ -145,7 +149,7 @@ function startTime(){
     if (snakeEatsApple){
         playerScore++
         sqrEls[appleLocation].style.backgroundColor = ''
-        renderApple()
+        appleOnBoard = false
         snake.grow()
     }
     scoreEl.textContent = `Score: ${playerScore}`
@@ -154,9 +158,17 @@ function startTime(){
 function renderSnake(){
     sqrEls.forEach((sqrEl) => {
         sqrEl.textContent=''
-        snake.tailPosition.forEach(piece=>{if (piece ===parseInt(sqrEl.id)) sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"})
-            if (parseInt(sqrEl.id) === snake.headPosition){sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadMoving.png')"}
+        if (parseInt(sqrEl.id) === snake.headPosition)
+            {sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadMoving.png')"}
+        else if (snake.tailPosition.includes(parseInt(sqrEl.id))) 
+            sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"
+        else if (parseInt(sqrEl.id) === appleLocation)
+            sqrEl.style.backgroundImage = "url('../assets/images/apple.png')"
+        else 
+            sqrEl.style.backgroundImage = ""
+
     })
+
 
 }
 
@@ -173,15 +185,28 @@ function handleKeyDown(key){
 
 function lose(){
     clearInterval(timeInterval)
-    textEl.textContent = 'lost hehexd'
+    textEl.textContent = 'GAME OVER'
     sqrEls.forEach(sqrEl=>{if (parseInt(sqrEl.id)=== snake.headPosition) sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadLost.png')"})
 }
 
+function init(){
+    clearInterval(timeInterval)
 
+    renderApple()
+    
+    score = 0
+    textEl.textContent =''
+    snake.direction = 'l'
+    snake.headPosition = initialPosition[0]
+    snake.tailPosition = initialPosition.slice(1)
+    timeInterval = setInterval(startTime, 1000 - speed)
+    console.log(initialPosition)
 
+}
 /*----------------------------- Event Listeners -----------------------------*/
 
 sqrEls.forEach(sqr => {if(walls.includes(parseInt(sqr.id))) sqr.style.backgroundColor='black'})
-
+restartEl.addEventListener('click', init)
 bodyEl.addEventListener('keydown', handleKeyDown)
+
 // for (let i =0;i<20;i++) snake.grow()
