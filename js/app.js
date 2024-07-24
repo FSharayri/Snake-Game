@@ -48,9 +48,12 @@ let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
 const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,snakeInitialPos+3]
 
 /*---------------------------- Variables (state) ----------------------------*/
-let speed = 400
+
+let speed = 600
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
+let appleOnBoard = false
+let snakeEatsApple = false
 for (let index = 0; index < boardlength; index++) {
     walls.push(index)
     walls.push(index+boardSize-boardlength)
@@ -59,7 +62,7 @@ for (let index = 0; index <= boardSize; index+=boardlength) {
     walls.push(index,index+boardlength-1)
     
 }
-
+let appleLocation
 let score = 0 
 let timer = 0
 
@@ -120,13 +123,29 @@ const snake = {
 
 
 /*-------------------------------- Functions --------------------------------*/
+function renderApple(){
+
+    appleLocation = parseInt(Math.random()*400)
+    while(walls.includes(appleLocation) || snake.headPosition ===appleLocation || snake.tailPosition.includes(appleLocation)){
+        appleLocation = parseInt(Math.random()*400)
+    }
+    sqrEls.forEach(sqr=>{ 
+        if(parseInt(sqr.id) ===appleLocation)
+            sqr.style.backgroundColor ='red'
+    })
+    appleOnBoard = true
+    console.log(appleLocation)  
+}
 renderApple()
 function startTime(){
     snake.move()
     // console.log('first')
     renderSnake()
-    
-    
+    snakeEatsApple=snake.headPosition === appleLocation
+    if (snakeEatsApple){
+        renderApple()
+        snake.grow()
+    }
 }
 
 function renderSnake(){
@@ -155,19 +174,7 @@ function lose(){
     sqrEls.forEach(sqrEl=>{if (parseInt(sqrEl.id)=== snake.headPosition) sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadLost.png')"})
 }
 
-function renderApple(){
 
-    let appleLocation = parseInt(Math.random()*400)
-    while(walls.includes(appleLocation) || snake.headPosition ===appleLocation || snake.tailPosition.includes(appleLocation)){
-        appleLocation = parseInt(Math.random()*400)
-    }
-    sqrEls.forEach(sqr=>{ 
-        if(parseInt(sqr.id) ===appleLocation)
-            sqr.style.backgroundColor ='red'
-    })
-
-    
-}
 
 /*----------------------------- Event Listeners -----------------------------*/
 
