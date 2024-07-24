@@ -43,7 +43,6 @@ const restartEl = document.querySelector('#restart')
 let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
 
 
-
 /*-------------------------------- Constants --------------------------------*/
 
 const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,snakeInitialPos+3]
@@ -64,9 +63,7 @@ for (let index = 0; index <= boardSize; index+=boardlength) {
     
 }
 let appleLocation
-let score = 0 
 let timer = 0
-
 const snake = {
     headPosition :initialPosition[0],  // starting square for the snakes head
      // starting position of snakes body
@@ -121,7 +118,6 @@ const snake = {
         }
     }
 }
-
 
 /*-------------------------------- Functions --------------------------------*/
 function renderApple(){
@@ -194,7 +190,7 @@ function init(){
 
     renderApple()
     
-    score = 0
+    playerScore = 0
     textEl.textContent =''
     snake.direction = 'l'
     snake.headPosition = initialPosition[0]
