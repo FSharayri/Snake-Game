@@ -35,7 +35,9 @@ for(let i =0; i<boardSize;i++){
     div.id = `${i}`
     boardEl.appendChild(div)
 }
-const scoreEl = document.querySelector('#currentScore')
+
+
+const scoreEl = document.querySelector('#current-score')
 const textEl = document.querySelector('h2')
 const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
@@ -49,7 +51,7 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 
 /*---------------------------- Variables (state) ----------------------------*/
 let playerScore = 0
-let speed = 800
+let speed = 700
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
@@ -71,7 +73,7 @@ const snake = {
     //bodyLength : 1 +this.tailPosition.length, // property to keep track of snakes length as it grows
     direction : 'l', //this is the direction the snake will be moving initialized to left
     // this grow function will be called whenever the snake eats a piece, and it depends on the direction element in the snake object, which will be manipulated later
-    grow : function(){
+    grow(){
         this.tailPosition.push(this.tailPosition.at(-1))
     },
     move(){
@@ -134,20 +136,20 @@ function renderApple(){
     appleOnBoard = true 
 }
 
-
-
 function startTime(){
     if (! appleOnBoard) renderApple() 
     snake.move()
     // console.log('first')
     renderSnake()
-    snakeEatsApple=snake.headPosition === appleLocation
+    snakeEatsApple = snake.headPosition === appleLocation
     if (snakeEatsApple){
         playerScore++
         sqrEls[appleLocation].style.backgroundColor = ''
         appleOnBoard = false
         snake.grow()
+        snake.grow()
     }
+
     scoreEl.textContent = `Score: ${playerScore}`
 }
 
@@ -155,7 +157,7 @@ function renderSnake(){
     sqrEls.forEach((sqrEl) => {
         sqrEl.textContent=''
         if (parseInt(sqrEl.id) === snake.headPosition)
-            {sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadMoving.png')"}
+            {sqrEl.style.backgroundImage= "url('../assets/images/snakeHead.png')"}
         else if (snake.tailPosition.includes(parseInt(sqrEl.id))) 
             sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"
         else if (parseInt(sqrEl.id) === appleLocation)
@@ -187,9 +189,7 @@ function lose(){
 
 function init(){
     clearInterval(timeInterval)
-
     renderApple()
-    
     playerScore = 0
     textEl.textContent =''
     snake.direction = 'l'
