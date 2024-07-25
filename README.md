@@ -11,19 +11,16 @@ towards the ***Apple*** the player increases their score by consecutively eating
 
 
 ![Snake Game Screenshot](./assets/readme/screenshot.png)
-## Skills and Technologies used
-![html Skill](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white) ![CSS Skill](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white) ![JavaScript Skill](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![GIT skill](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+## Technologies and Skills used
+# ![html Skill](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)  ![CSS Skill](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white) ![JavaScript Skill](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![GIT skill](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 
 
-# Play The Game Now!
-
-## Press on the play button below
+# Play The Game Now! Press on the play button below
 # [![Play](./assets/readme/play.png)](https://fsharayri.github.io/Snake-Game/) 
 
 
 
-https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
-https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white
+
 
 
 ## planning material
@@ -34,8 +31,16 @@ For the initial planning material [Click here](https://docs.google.com/document/
 
 
 
-
-
+## Future Enhancements
+- highscore implementation
+- sound effects 
+- confetti effect upon beating highscore 
+- snake opens mouth around the apple squares
+- speed up when reaching certain checkpoints in score
+- visual adjustments to snake and apple
+- implementing how to play and controls demonstration
+- implementing pause logic with button and keystroke
+- adding animation to apple appearing on board
 
 
 
