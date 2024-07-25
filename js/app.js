@@ -16,18 +16,18 @@
 //7) Create Reset functionality.
 
 
-/*------------------------ Cached Element References ------------------------*/
 
+// creating a board with dynamic length 
 let boardlength = 20
 let boardWidthCss= 100/boardlength
 let boardSize = boardlength**2
-
+// setting a css variable to the specified length 
 let r = document.querySelector(':root');
 let rs = getComputedStyle(r);
-
 r.style.setProperty('--boardWidth', `${boardWidthCss}%`);
 
-
+/*------------------------ Cached Element References ------------------------*/
+// creating board squares
 const boardEl = document.querySelector('#board')
 for(let i =0; i<boardSize;i++){
     let div= document.createElement(`div`)
@@ -51,7 +51,7 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 
 /*---------------------------- Variables (state) ----------------------------*/
 let playerScore = 0
-let speed = 700
+let speed = 900
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
@@ -127,19 +127,12 @@ function renderApple(){
     while(walls.includes(appleLocation) || snake.headPosition ===appleLocation || snake.tailPosition.includes(appleLocation)){
         appleLocation = parseInt(Math.random()*400)
     }
-    // sqrEls.forEach(sqr=>{ 
-    //     if(parseInt(sqr.id) ===appleLocation)
-    //         sqr.style.backgroundColor ='red'
-    //     else 
-    //        sqr.style.backgroundColor =''
-    // })
     appleOnBoard = true 
 }
 
 function startTime(){
     if (! appleOnBoard) renderApple() 
     snake.move()
-    // console.log('first')
     renderSnake()
     snakeEatsApple = snake.headPosition === appleLocation
     if (snakeEatsApple){
@@ -156,14 +149,19 @@ function startTime(){
 function renderSnake(){
     sqrEls.forEach((sqrEl) => {
         sqrEl.textContent=''
-        if (parseInt(sqrEl.id) === snake.headPosition)
-            {sqrEl.style.backgroundImage= "url('../assets/images/snakeHead.png')"}
+        if (parseInt(sqrEl.id) === snake.headPosition){
+            rotateHead(snake.direction)
+            {sqrEl.style.backgroundImage= "url('../assets/images/head3.png')"}
+        }
         else if (snake.tailPosition.includes(parseInt(sqrEl.id))) 
             sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"
         else if (parseInt(sqrEl.id) === appleLocation)
             sqrEl.style.backgroundImage = "url('../assets/images/apple.png')"
+
         else 
             sqrEl.style.backgroundImage = ""
+            sqrEl.style.transfor= ''
+
 
     })
 
@@ -173,6 +171,7 @@ function renderSnake(){
 function handleKeyDown(key){
     if (key.key ==='ArrowUp' && snake.direction!=='d' )
         snake.direction='u'
+        sqrEls[snake.headPosition].style.transform = 'rotate(-90deg)'
     if (key.key ==='ArrowDown' && snake.direction!=='u')
         snake.direction='d'
     if (key.key ==='ArrowLeft' && snake.direction!=='r')
@@ -184,7 +183,15 @@ function handleKeyDown(key){
 function lose(){
     clearInterval(timeInterval)
     textEl.textContent = 'GAME OVER'
+    textEl.className ='animate__animated animate__bounce'
     sqrEls.forEach(sqrEl=>{if (parseInt(sqrEl.id)=== snake.headPosition) sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadLost.png')"})
+}
+
+function rotateHead(dir){
+    if (dir === 'u') sqrEls[snake.headPosition].style.transform = 'rotate(0deg)'
+    if (dir === 'd') sqrEls[snake.headPosition].style.transform = 'rotate(180deg)'
+    if (dir === 'l') sqrEls[snake.headPosition].style.transform = 'rotate(-90deg)'
+    if (dir === 'r') sqrEls[snake.headPosition].style.transform = 'rotate(90deg)'
 }
 
 function init(){
@@ -205,4 +212,3 @@ sqrEls.forEach(sqr => {if(walls.includes(parseInt(sqr.id))) sqr.style.background
 restartEl.addEventListener('click', init)
 bodyEl.addEventListener('keydown', handleKeyDown)
 
-// for (let i =0;i<20;i++) snake.grow()
