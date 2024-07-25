@@ -5,4 +5,10 @@ towards the ***Apple*** the player increases their score by consecutively eating
 I personally chose this game because it was my fathers favorite game, he used to play it on this old nokia device that he still had up to 2021 before passing away, so in a way this is a tribute to him. 
 > the players compete being trying to score as high as they can before losing. 
 
-![Snake Game Screenshot](./assets/images/screenshot.png)
+![Snake Game Screenshot](./assets/readme/screenshot.png)
+
+
+# Play The Game Now!
+
+## Press on the play button below
+# [![Play](./assets/readme/play.png)](https://fsharayri.github.io/Snake-Game/) 
