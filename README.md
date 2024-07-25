@@ -13,19 +13,19 @@ towards the ***Apple*** the player increases their score by consecutively eating
 
 ### 1. Board
 _________
- The board will be rendered and the walls will dynamically be put on the sides *(see screenshot above)*, the player will lose if the snake hits the walls
+ The Board will be rendered and the Walls will dynamically be put on the sides *(see screenshot above)*, the player will lose if the Snake hits the Walls
 
 ![board](./assets/readme/board.png)
 
 ### 2. Snake
 __________________________
-the main character in the game that the player will control with the **Arrow Keys**(⬆️⬇️⬅️➡️) the snake doesn't stop moving, so the player has to keep directing it away from the walls and the snake's tail
+the main character in the game that the player will control with the **Arrow Keys**(⬆️⬇️⬅️➡️) is the Snake doesn't stop moving, so the player has to keep directing it away from the walls and the Snake's tail
 
 ![snake](./assets/readme/j.png)
 
 #### 3. Apple 
 ________
-the main objective is for the player to reach the apple and capture it with the snake.
+the main objective is for the player to reach the Apple and capture it with the Snake.
 A new Apple appears on the screen whenever one is eaten. the player then has to path towards the new one to gain a point 
 
 ![Apple](./assets/readme/apple.png)
@@ -33,7 +33,7 @@ A new Apple appears on the screen whenever one is eaten. the player then has to 
 
 
 ## **Technologies and Skills used**
-# ![html Skill](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)   ![CSS Skill](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)    ![JavaScript Skill](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)    ![GIT skill](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+# ![html Skill](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)    ![CSS Skill](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)    ![JavaScript Skill](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)    ![GIT skill](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 
 
 # **Play The Game Now! Press on the play button below**
