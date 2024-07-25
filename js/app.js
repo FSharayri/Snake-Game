@@ -51,7 +51,7 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 
 /*---------------------------- Variables (state) ----------------------------*/
 let playerScore = 0
-let speed = 300
+let speed = 600
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
