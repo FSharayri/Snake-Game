@@ -41,6 +41,7 @@ For the initial planning material [Click here](https://docs.google.com/document/
 - implementing how to play and controls demonstration
 - implementing pause logic with button and keystroke
 - adding animation to apple appearing on board
+- change font to fit with theme
 
 
 
