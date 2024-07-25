@@ -145,17 +145,7 @@ function startTime(){
         sqrEls[appleLocation].style.backgroundColor = ''
         appleOnBoard = false
         snake.grow()
-        snake.grow()
-        snake.grow()
-        snake.grow()
-        snake.grow()
-        snake.grow()
-        snake.grow()
-        snake.grow()
-        snake.grow()
-        snake.grow()
-        snake.grow()
-        snake.grow()
+       
     }
     scoreEl.textContent = `Score: ${playerScore}`
 }
