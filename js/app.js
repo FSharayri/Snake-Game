@@ -198,6 +198,7 @@ function init(){
     renderApple()
     playerScore = 0
     textEl.textContent ='Eat the Apples'
+    textEl.className='animate__animated animate__flash'
     snake.direction = 'l'
     snake.headPosition = initialPosition[0]
     snake.tailPosition = initialPosition.slice(1)
