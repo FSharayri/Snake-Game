@@ -1,17 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 :root {
     --boardWidth : 5%; 
 }
 body{
+    font-family: "Gugi", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     display: flex;
     background-color: rgb(38, 38, 38);
     color: beige;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-
-    
-
+}
+#main-header{
+    border: 3px solid ;
+    font-weight: 800;
+    font-size: 3vh;
+    padding: 0 12px;
 }
 #board{
     display: flex;
@@ -19,7 +25,7 @@ body{
     justify-content: space-evenly;
     align-items: center;
     background-color: rgb(49, 49, 49);
-    width: 80vh;
+    width: 70vw;
     aspect-ratio: 1/1;
     background-image: url('../assets/images/board.png');
     background-size:contain;
@@ -43,5 +49,43 @@ body{
     align-items: center;
     flex-direction: row;
     gap: 10vw;
+    padding-top: 10px;
+    width: 60vw;
+    font-size: larger;
     
+}
+
+#restart {
+  
+  background-image: linear-gradient(-180deg, #0c472d, #057744);
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #FFFFFF;
+  display: inline-block;
+  height: 6vh;
+  width: 12vw;
+  padding: 0 20px;
+  text-align: center;
+  font-family: "Gugi", sans-serif;
+  font-weight: 800;
+  font-size: x-large;
+  font-style: normal;
+  cursor: pointer;
+  border: 0;
+  
+}
+
+#restart:hover {
+  background: #00bd689d;
+}
+   
+#game-status {
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+    align-items: center;
+    font-family: "Gugi", sans-serif;
+    font-weight: 800;
+    font-size: x-large;
+
 }

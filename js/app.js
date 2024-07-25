@@ -38,7 +38,7 @@ for(let i =0; i<boardSize;i++){
 
 
 const scoreEl = document.querySelector('#current-score')
-const textEl = document.querySelector('h2')
+const textEl = document.querySelector('#message')
 const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
 const restartEl = document.querySelector('#restart')
