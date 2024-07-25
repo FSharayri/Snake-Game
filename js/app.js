@@ -51,7 +51,7 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 
 /*---------------------------- Variables (state) ----------------------------*/
 let playerScore = 0
-let speed = 600
+let speed = 700
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
@@ -158,7 +158,7 @@ function renderSnakeApple(){
     
     sqrEls[appleLocation].className ='sqr animate__animated animate__fadeIn'
     
-    sqrEls[appleLocation].style.backgroundImage="url('./assets/images/apple2.png')"
+    sqrEls[appleLocation].style.backgroundImage="url('./assets/images/apple.png')"
     
     snake.tailPosition.forEach(piece=> sqrEls[piece].style.backgroundImage= "url('./assets/images/skin.png')")
     sqrEls[snake.headPosition].style.backgroundImage="url('./assets/images/head.png')"
@@ -197,7 +197,7 @@ function init(){
     clearInterval(timeInterval)
     renderApple()
     playerScore = 0
-    textEl.textContent ='How Do you Like Them Apples'
+    textEl.textContent ='Eat the Apples'
     snake.direction = 'l'
     snake.headPosition = initialPosition[0]
     snake.tailPosition = initialPosition.slice(1)
