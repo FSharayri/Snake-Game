@@ -51,7 +51,7 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 
 /*---------------------------- Variables (state) ----------------------------*/
 let playerScore = 0
-let speed = 900
+let speed = 300
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
@@ -147,31 +147,15 @@ function startTime(){
 }
 
 function renderSnake(){
-    sqrEls.forEach((sqrEl) => {
-        sqrEl.textContent=''
-        if (parseInt(sqrEl.id) === snake.headPosition){
-            rotateHead(snake.direction)
-            {sqrEl.style.backgroundImage= "url('../assets/images/head3.png')"}
-        }
-        else if (snake.tailPosition.includes(parseInt(sqrEl.id))) 
-            sqrEl.style.backgroundImage= "url('../assets/images/skin.png')"
-        else if (parseInt(sqrEl.id) === appleLocation)
-            sqrEl.style.backgroundImage = "url('../assets/images/apple.png')"
-
-        else 
-            sqrEl.style.backgroundImage = ""
-            sqrEl.style.transfor= ''
-
-
-    })
-
-
+    sqrEls[appleLocation].style.backgroundImage="url('../assets/images/apple.png')"
+    snake.tailPosition.forEach(piece=> sqrEls[piece].style.backgroundImage= "url('../assets/images/skin.png')")
+    sqrEls[snake.headPosition].style.backgroundImage="url('../assets/images/snake head.png')"
+    rotateHead(snake.direction)
 }
 
 function handleKeyDown(key){
     if (key.key ==='ArrowUp' && snake.direction!=='d' )
         snake.direction='u'
-        sqrEls[snake.headPosition].style.transform = 'rotate(-90deg)'
     if (key.key ==='ArrowDown' && snake.direction!=='u')
         snake.direction='d'
     if (key.key ==='ArrowLeft' && snake.direction!=='r')
@@ -198,7 +182,7 @@ function init(){
     clearInterval(timeInterval)
     renderApple()
     playerScore = 0
-    textEl.textContent =''
+    textEl.textContent ='How Do you Like Them Apples'
     snake.direction = 'l'
     snake.headPosition = initialPosition[0]
     snake.tailPosition = initialPosition.slice(1)
