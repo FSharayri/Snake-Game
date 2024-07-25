@@ -51,7 +51,7 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 
 /*---------------------------- Variables (state) ----------------------------*/
 let playerScore = 0
-let speed = 800
+let speed = 300
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
@@ -146,15 +146,25 @@ function startTime(){
         appleOnBoard = false
         snake.grow()
         snake.grow()
+        snake.grow()
+        snake.grow()
+        snake.grow()
+        snake.grow()
+        snake.grow()
+        snake.grow()
+        snake.grow()
+        snake.grow()
+        snake.grow()
+        snake.grow()
     }
     scoreEl.textContent = `Score: ${playerScore}`
 }
 
 function renderSnakeApple(){
     
-    sqrEls[appleLocation].style.backgroundImage="url('../assets/images/apple.png')"
-    snake.tailPosition.forEach(piece=> sqrEls[piece].style.backgroundImage= "url('../assets/images/skin.png')")
-    sqrEls[snake.headPosition].style.backgroundImage="url('../assets/images/j.png')"
+    sqrEls[appleLocation].style.backgroundImage="url('./assets/images/apple.png')"
+    snake.tailPosition.forEach(piece=> sqrEls[piece].style.backgroundImage= "url('./assets/images/skin.png')")
+    sqrEls[snake.headPosition].style.backgroundImage="url('./assets/images/j.png')"
     rotateHead(snake.direction)
     
 }
