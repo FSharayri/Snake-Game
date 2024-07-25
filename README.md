@@ -11,12 +11,19 @@ towards the ***Apple*** the player increases their score by consecutively eating
 
 
 ![Snake Game Screenshot](./assets/readme/screenshot.png)
+## Skills and Technologies used
+![html Skill](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white) ![CSS Skill](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white) ![JavaScript Skill](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![GIT skill](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 
 
 # Play The Game Now!
 
 ## Press on the play button below
 # [![Play](./assets/readme/play.png)](https://fsharayri.github.io/Snake-Game/) 
+
+
+
+https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white
 
 
 ## planning material
