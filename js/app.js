@@ -179,6 +179,7 @@ function rotateHead(dir){
 }
 
 function init(){
+    sqrEls.forEach(sqr=> sqr.style.backgroundImage='')
     clearInterval(timeInterval)
     renderApple()
     playerScore = 0
