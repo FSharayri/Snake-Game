@@ -51,7 +51,7 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 
 /*---------------------------- Variables (state) ----------------------------*/
 let playerScore = 0
-let speed = 300
+let speed = 800
 let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
@@ -77,13 +77,14 @@ const snake = {
         this.tailPosition.push(this.tailPosition.at(-1))
     },
     move(){
-        // console.log(snake.headPosition)
+        let lastIdx 
         if (this.direction ==='l'){
             if (walls.includes(this.headPosition-1) || this.tailPosition.includes(this.headPosition-1)) {   
                 lose() 
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
+                sqrEls[this.tailPosition.at(-1)].style.transform = 'rotate(0deg)'
                 sqrEls[this.tailPosition.pop()].style.backgroundImage=''
                 this.headPosition-- 
             }
@@ -94,6 +95,7 @@ const snake = {
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
+                sqrEls[this.tailPosition.at(-1)].style.transform = 'rotate(0deg)'
                 sqrEls[this.tailPosition.pop()].style.backgroundImage=''
                 this.headPosition++
             }
@@ -104,6 +106,7 @@ const snake = {
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
+                sqrEls[this.tailPosition.at(-1)].style.transform = 'rotate(0deg)'
                 sqrEls[this.tailPosition.pop()].style.backgroundImage=''
                 this.headPosition-=boardlength
             }
@@ -114,6 +117,7 @@ const snake = {
             }
             else {
                 this.tailPosition.unshift(this.headPosition)
+                sqrEls[this.tailPosition.at(-1)].style.transform = 'rotate(0deg)'
                 sqrEls[this.tailPosition.pop()].style.backgroundImage=''
                 this.headPosition+=boardlength
             }
@@ -133,7 +137,8 @@ function renderApple(){
 function startTime(){
     if (! appleOnBoard) renderApple() 
     snake.move()
-    renderSnake()
+    renderSnakeApple()
+    
     snakeEatsApple = snake.headPosition === appleLocation
     if (snakeEatsApple){
         playerScore++
@@ -142,15 +147,16 @@ function startTime(){
         snake.grow()
         snake.grow()
     }
-
     scoreEl.textContent = `Score: ${playerScore}`
 }
 
-function renderSnake(){
+function renderSnakeApple(){
+    
     sqrEls[appleLocation].style.backgroundImage="url('../assets/images/apple.png')"
     snake.tailPosition.forEach(piece=> sqrEls[piece].style.backgroundImage= "url('../assets/images/skin.png')")
-    sqrEls[snake.headPosition].style.backgroundImage="url('../assets/images/snake head.png')"
+    sqrEls[snake.headPosition].style.backgroundImage="url('../assets/images/j.png')"
     rotateHead(snake.direction)
+    
 }
 
 function handleKeyDown(key){
@@ -165,17 +171,18 @@ function handleKeyDown(key){
 }
 
 function lose(){
+    
     clearInterval(timeInterval)
     textEl.textContent = 'GAME OVER'
     textEl.className ='animate__animated animate__bounce'
-    sqrEls.forEach(sqrEl=>{if (parseInt(sqrEl.id)=== snake.headPosition) sqrEl.style.backgroundImage= "url('../assets/images/snakeHeadLost.png')"})
+    
 }
 
 function rotateHead(dir){
     if (dir === 'u') sqrEls[snake.headPosition].style.transform = 'rotate(0deg)'
-    if (dir === 'd') sqrEls[snake.headPosition].style.transform = 'rotate(180deg)'
-    if (dir === 'l') sqrEls[snake.headPosition].style.transform = 'rotate(-90deg)'
-    if (dir === 'r') sqrEls[snake.headPosition].style.transform = 'rotate(90deg)'
+    else if (dir === 'd') sqrEls[snake.headPosition].style.transform = 'rotate(180deg)'
+    else if (dir === 'l') sqrEls[snake.headPosition].style.transform = 'rotate(-90deg)'
+    else if (dir === 'r') sqrEls[snake.headPosition].style.transform = 'rotate(90deg)'
 }
 
 function init(){
