@@ -5,34 +5,46 @@ towards the ***Apple*** the player increases their score by consecutively eating
 
 >*I personally chose this game because it was my father's favorite game, he used to play it on this old Nokia device that he still had up to 2021 before passing away from COVID-19, in a way this is a tribute to him.* 
 
-## Main Elements of the game
-### Board
+![Snake Game Screenshot](./assets/readme/screenshot.png)
+
+
+
+## **Main Elements of the game**
+
+### 1. Board
+_________
+ The board will be rendered and the walls will dynamically be put on the sides *(see screenshot above)*, the player will lose if the snake hits the walls
+
 ![board](./assets/readme/board.png)
-### Snake
+
+### 2. Snake
+__________________________
+the main character in the game that the player will control with the **Arrow Keys**(⬆️⬇️⬅️➡️) the snake doesn't stop moving, so the player has to keep directing it away from the walls and the snake's tail
+
 ![snake](./assets/readme/j.png)
-### Apple 
+
+#### 3. Apple 
+________
+the main objective is for the player to reach the apple and capture it with the snake.
+A new Apple appears on the screen whenever one is eaten. the player then has to path towards the new one to gain a point 
+
 ![Apple](./assets/readme/apple.png)
 
 
 
->*I personally chose this game because it was my father's favorite game, he used to play it on this old Nokia device that he still had up to 2021 before passing away from COVID-19, in a way this is a tribute to him.* 
+## **Technologies and Skills used**
+# ![html Skill](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)   ![CSS Skill](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)    ![JavaScript Skill](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)    ![GIT skill](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 
 
-![Snake Game Screenshot](./assets/readme/screenshot.png)
-## Technologies and Skills used
-
-# ![html Skill](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)   ![CSS Skill](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)    ![JavaScript Skill](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)    ![GIT skill](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
-
-
-# Play The Game Now! Press on the play button below
+# **Play The Game Now! Press on the play button below**
 # [![Play](./assets/readme/play.png)](https://fsharayri.github.io/Snake-Game/) 
 
 
-## planning material
+## **planning material**
 For the initial planning material [Click here](https://docs.google.com/document/d/1KdzVdU4wa9pIRd8ItaUslJwcO0XZ_I8rpmsuNOFbUW0/edit)
 
 
-## Future Enhancements
+## **Future Enhancements**
 - high score implementation
 - sound effects 
 - confetti effect upon beating the high score 
@@ -42,7 +54,7 @@ For the initial planning material [Click here](https://docs.google.com/document/
 - implementing how-to-play 
 - implementing pause logic with button and keystroke
 - adding animation to Apple appearing on board
-- change the font to fit with theme
+- change the font to fit with the theme
 
 
 # Attributions
