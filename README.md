@@ -1,8 +1,19 @@
 # Snake Game
 ***Snake Game*** is a game where the player uses the **Arrow Keys**(⬆️⬇️⬅️➡️) to direct the ***Snake***
 towards the ***Apple*** the player increases their score by consecutively eating apples, which makes the snake grow longer. The player loses when colliding with the sides of the board or the snake's tail.
-
 > **The players compete to score as high as possible before losing.** 
+
+>*I personally chose this game because it was my father's favorite game, he used to play it on this old Nokia device that he still had up to 2021 before passing away from COVID-19, in a way this is a tribute to him.* 
+
+## Main Elements of the game
+### Board
+![board](./assets/readme/board.png)
+### Snake
+![snake](./assets/readme/j.png)
+### Apple 
+![Apple](./assets/readme/apple.png)
+
+
 
 >*I personally chose this game because it was my father's favorite game, he used to play it on this old Nokia device that he still had up to 2021 before passing away from COVID-19, in a way this is a tribute to him.* 
 
