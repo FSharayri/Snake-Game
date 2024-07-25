@@ -143,6 +143,8 @@ function startTime(){
     if (snakeEatsApple){
         playerScore++
         sqrEls[appleLocation].style.backgroundColor = ''
+        sqrEls[appleLocation].className = 'sqr'
+        
         appleOnBoard = false
         snake.grow()
         snake.grow()
@@ -152,8 +154,11 @@ function startTime(){
 }
 
 function renderSnakeApple(){
+    sqrEls[appleLocation].style.border ='0'
+    sqrEls[appleLocation].className ='sqr animate__animated animate__zoomIn '
+    sqrEls[appleLocation].style.border ='1px solid black;'
+    sqrEls[appleLocation].style.backgroundImage="url('./assets/images/apple2.png')"
     
-    sqrEls[appleLocation].style.backgroundImage="url('./assets/images/apple.png')"
     snake.tailPosition.forEach(piece=> sqrEls[piece].style.backgroundImage= "url('./assets/images/skin.png')")
     sqrEls[snake.headPosition].style.backgroundImage="url('./assets/images/head.png')"
     rotateHead(snake.direction)

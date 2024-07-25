@@ -38,9 +38,9 @@ body{
     aspect-ratio: 1/1;
     align-items: center;
     justify-content: center;
-    background-size: contain;
+    background-size: cover;
     border-radius: 2px;
-    border: 0.3px solid black;
+    border: 1px solid black;
     box-sizing: border-box;
 }
 #score-board{
