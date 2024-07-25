@@ -19,14 +19,14 @@ _________
 
 ### 2. Snake
 __________________________
-the main character in the game that the player will control with the **Arrow Keys**(⬆️⬇️⬅️➡️) is the Snake doesn't stop moving, so the player has to keep directing it away from the Walls and the Snake's tail
+The main character in the game that the player will control with the **Arrow Keys**(⬆️⬇️⬅️➡️) is the Snake doesn't stop moving, so the player has to keep directing it away from the Walls and the Snake's tail
 
 ![snake](./assets/readme/head.png)
 
 #### 3. Apple 
 ________
-the main objective is for the player to reach the Apple and capture it with the Snake.
-A new Apple appears on the screen whenever one is eaten. the player then has to path towards the new one to capture it
+The main objective is for the player to reach the Apple and capture it with the Snake.
+A new Apple appears on the screen whenever one is eaten. The player then has to path towards the new one to capture it
 
 ![Apple](./assets/readme/apple.png)
 
