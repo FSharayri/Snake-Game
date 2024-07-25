@@ -155,7 +155,7 @@ function renderSnakeApple(){
     
     sqrEls[appleLocation].style.backgroundImage="url('./assets/images/apple.png')"
     snake.tailPosition.forEach(piece=> sqrEls[piece].style.backgroundImage= "url('./assets/images/skin.png')")
-    sqrEls[snake.headPosition].style.backgroundImage="url('./assets/images/j.png')"
+    sqrEls[snake.headPosition].style.backgroundImage="url('./assets/images/head.png')"
     rotateHead(snake.direction)
     
 }

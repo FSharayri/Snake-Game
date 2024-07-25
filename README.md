@@ -21,7 +21,7 @@ _________
 __________________________
 the main character in the game that the player will control with the **Arrow Keys**(⬆️⬇️⬅️➡️) is the Snake doesn't stop moving, so the player has to keep directing it away from the Walls and the Snake's tail
 
-![snake](./assets/readme/j.png)
+![snake](./assets/readme/head.png)
 
 #### 3. Apple 
 ________
