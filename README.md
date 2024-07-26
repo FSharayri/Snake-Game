@@ -46,9 +46,7 @@ For the initial planning material [Click here](https://docs.google.com/document/
 
 ## **Future Enhancements**
 - high score implementation
-- confetti effect upon beating the high score 
 - snake opens its mouth around the apple squares
-- speed up when reaching certain checkpoints in score
 - implementing pause logic with button and keystroke
 
 
