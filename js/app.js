@@ -20,6 +20,7 @@ const textEl = document.querySelector('#message')
 const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
 const restartEl = document.querySelector('#restart')
+const levelUpMessageEl = document.querySelector('#level-up-message')
 let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
 
 /*-------------------------------- Constants --------------------------------*/
@@ -28,6 +29,8 @@ const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,sna
 const gameOverSound = new Audio('./assets/sounds/game over.wav')
 const eatSound = new Audio('./assets/sounds/eat.wav')
 const startGameSound = new Audio('./assets/sounds/start game.ogg')
+const levelUpSound = new Audio('./assets/sounds/level up.wav')
+
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -120,7 +123,7 @@ function renderApple(){
 
 function levelUp(){
     if (playerScore >34) {
-        speed= 960
+        speed= 940
         clearInterval(timeInterval)
         timeInterval = setInterval(startTime, 1000 - speed)
     }
@@ -138,8 +141,10 @@ function levelUp(){
         speed= 650
         clearInterval(timeInterval)
         timeInterval = setInterval(startTime, 1000 - speed)
-        
+
     }
+    
+    
 }
 function checkforEat(){ 
     if (snake.headPosition === appleLocation){
@@ -148,12 +153,22 @@ function checkforEat(){
         sqrEls[appleLocation].className = 'sqr'       
         appleOnBoard = false
         snake.grow()
-        snake.grow()  
+        snake.grow() 
+        if (playerScore ===7 ||playerScore ===15||playerScore ===25||playerScore ===35) {
+            confetti.start(600)
+            levelUpSound.play()
+            levelUpMessageEl.style.display = ''
+            
+        } 
+        else {
+            levelUpMessageEl.style.display = 'hide'
+        }
     }
 }
 
 function updateScore(){
     scoreEl.textContent = `Score: ${playerScore}`
+    
 }
 
 function startTime(){
@@ -231,4 +246,3 @@ function init(){
 sqrEls.forEach(sqr => {if(walls.includes(parseInt(sqr.id))) sqr.style.backgroundColor='black'})
 restartEl.addEventListener('click', init)
 bodyEl.addEventListener('keydown', handleKeyDown)
-

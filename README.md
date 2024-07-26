@@ -60,3 +60,4 @@ For the initial planning material [Click here](https://docs.google.com/document/
     - #### Eat sound effect: [Apple_Crunch_02.wav by Koops -- License: Attribution 4.0](https://freesound.org/s/20265/)
     - #### Game over sound effect: [negative_beeps.wav by themusicalnomad -- License: Creative Commons 0](https://freesound.org/s/253886/)
     - #### Start Game sound effect: [Game Start by plasterbrain -- License: Creative Commons 0](https://freesound.org/s/243020/)
+    - #### Level Up sound effect: [level up.wav by MakoFox -- License: Attribution 3.0](https://freesound.org/s/126422/)
