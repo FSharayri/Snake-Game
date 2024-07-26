@@ -158,10 +158,9 @@ function checkforEat(){
             confetti.start(600)
             levelUpSound.play()
             levelUpMessageEl.style.display = ''
-            
         } 
         else {
-            levelUpMessageEl.style.display = 'hide'
+            levelUpMessageEl.style.display = 'none'
         }
     }
 }

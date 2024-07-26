@@ -41,6 +41,13 @@ body{
     text-align: center;
     font-size: small;
 }
+#level-up-message {
+    font-size: larger;
+    font-weight: bolder;
+    animation: backInRight; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s;
+  
+}
 
 .sqr {
     width:  var(--boardWidth); /*this is 100% of the board element divided by 20 which 
