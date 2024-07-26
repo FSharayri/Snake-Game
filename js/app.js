@@ -159,7 +159,7 @@ function checkforEat(){
             confetti.start(200)
             levelUpSound.play()
             levelUpMessageEl.style.display = ''
-            setTimeout(()=>{levelUpMessageEl.style.display = 'none'},2500)
+            setTimeout(()=>{levelUpMessageEl.style.display = 'none'},3300)
         }   
     }
 }
