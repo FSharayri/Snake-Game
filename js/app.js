@@ -35,7 +35,7 @@ let walls =[]
 let appleOnBoard = false
 let snakeEatsApple = false
 let lost = false
-startGameSound.play()
+
 for (let index = 0; index < boardlength; index++) {
     walls.push(index)
     walls.push(index+boardSize-boardlength)
@@ -166,6 +166,7 @@ function rotateHead(dir){
 }
 
 function init(){
+     
     sqrEls.forEach(sqr=> {
         sqr.style.backgroundImage=''
         sqr.className = 'sqr'
