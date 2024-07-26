@@ -1,22 +1,4 @@
 
-//initial boilerplate for the game, this will be modified as the game is being built.
-//1) Define the required variables used to track the state of the game.
-
-//2) Store cached element references.
-
-//3) Upon loading, the game state should be initialized, and a function should 
-//   be called to render this game state.
-
-//4) The state of the game should be rendered to the user.
-
-//5) Define the required constants.
-
-//6) Handle a player pressing a button with a `buttonPressHandle` function.
-
-//7) Create Reset functionality.
-
-
-
 // creating a board with dynamic length 
 let boardlength = 20
 let boardWidthCss= 100/boardlength
@@ -25,7 +7,6 @@ let boardSize = boardlength**2
 let r = document.querySelector(':root');
 let rs = getComputedStyle(r);
 r.style.setProperty('--boardWidth', `${boardWidthCss}%`);
-
 /*------------------------ Cached Element References ------------------------*/
 // creating board squares
 const boardEl = document.querySelector('#board')
@@ -35,20 +16,14 @@ for(let i =0; i<boardSize;i++){
     div.id = `${i}`
     boardEl.appendChild(div)
 }
-
-
 const scoreEl = document.querySelector('#current-score')
 const textEl = document.querySelector('#message')
 const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
 const restartEl = document.querySelector('#restart')
 let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
-
-
 /*-------------------------------- Constants --------------------------------*/
-
 const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,snakeInitialPos+3]
-
 const gameOverSound = new Audio('./assets/sounds/game over.wav')
 const eatSound = new Audio('./assets/sounds/eat.wav')
 const startGameSound = new Audio('./assets/sounds/start game.ogg')
@@ -59,14 +34,14 @@ let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
 let snakeEatsApple = false
+let lost = false
 startGameSound.play()
 for (let index = 0; index < boardlength; index++) {
     walls.push(index)
     walls.push(index+boardSize-boardlength)
 }
 for (let index = 0; index <= boardSize; index+=boardlength) {
-    walls.push(index,index+boardlength-1)
-    
+    walls.push(index,index+boardlength-1)   
 }
 let appleLocation
 let timer = 0
@@ -82,7 +57,6 @@ const snake = {
         eatSound.play()
     },
     move(){
-        let lastIdx 
         if (this.direction ==='l'){
             if (walls.includes(this.headPosition-1) || this.tailPosition.includes(this.headPosition-1)) {   
                 lose() 
@@ -143,18 +117,14 @@ function startTime(){
     if (! appleOnBoard) renderApple() 
     snake.move()
     renderSnakeApple()
-    
     snakeEatsApple = snake.headPosition === appleLocation
     if (snakeEatsApple){
         playerScore++
-        sqrEls[appleLocation].style.backgroundColor = ''
-        
-        sqrEls[appleLocation].className = 'sqr'
-        
+        sqrEls[appleLocation].style.backgroundColor = ''     
+        sqrEls[appleLocation].className = 'sqr'       
         appleOnBoard = false
         snake.grow()
-        snake.grow()
-       
+        snake.grow()  
     }
     scoreEl.textContent = `Score: ${playerScore}`
 }
@@ -162,13 +132,10 @@ function startTime(){
 function renderSnakeApple(){
     
     sqrEls[appleLocation].className ='sqr animate__animated animate__fadeIn'
-    
     sqrEls[appleLocation].style.backgroundImage="url('./assets/images/apple.png')"
-    
     snake.tailPosition.forEach(piece=> sqrEls[piece].style.backgroundImage= "url('./assets/images/skin.png')")
-    sqrEls[snake.headPosition].style.backgroundImage="url('./assets/images/head.png')"
+    lost? sqrEls[snake.headPosition].style.backgroundImage="url('./assets/images/lose concept.png')":sqrEls[snake.headPosition].style.backgroundImage="url('./assets/images/head.png')"
     rotateHead(snake.direction)
-    
 }
 
 function handleKeyDown(key){
@@ -183,10 +150,12 @@ function handleKeyDown(key){
 }
 
 function lose(){
+    sqrEls[snake.headPosition].className = 'sqr animate__animated animate__flash'
     clearInterval(timeInterval)
     textEl.textContent = 'GAME OVER'
     textEl.className ='animate__animated animate__bounce' 
     gameOverSound.play()
+    lost = true
 }
 
 function rotateHead(dir){
@@ -197,12 +166,15 @@ function rotateHead(dir){
 }
 
 function init(){
-
-    sqrEls.forEach(sqr=> sqr.style.backgroundImage='')
+    sqrEls.forEach(sqr=> {
+        sqr.style.backgroundImage=''
+        sqr.className = 'sqr'
+        sqr.style.transform = 'rotate(0deg)'
+    })
     clearInterval(timeInterval)
     renderApple()
-    playerScore = 0
-    
+    playerScore = 0 
+    lost = false 
     textEl.textContent ='Eat the Apples'
     startGameSound.play()
     textEl.className='animate__animated animate__flash'
@@ -210,8 +182,6 @@ function init(){
     snake.headPosition = initialPosition[0]
     snake.tailPosition = initialPosition.slice(1)
     timeInterval = setInterval(startTime, 1000 - speed)
-    console.log(initialPosition)
-
 }
 /*----------------------------- Event Listeners -----------------------------*/
 
