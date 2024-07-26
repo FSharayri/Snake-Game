@@ -1,4 +1,3 @@
-
 // creating a board with dynamic length 
 let boardlength = 20
 let boardWidthCss= 100/boardlength
@@ -22,12 +21,16 @@ const sqrEls = document.querySelectorAll('.sqr')
 const bodyEl = document.querySelector('body')
 const restartEl = document.querySelector('#restart')
 let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
+
 /*-------------------------------- Constants --------------------------------*/
+
 const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,snakeInitialPos+3]
 const gameOverSound = new Audio('./assets/sounds/game over.wav')
 const eatSound = new Audio('./assets/sounds/eat.wav')
 const startGameSound = new Audio('./assets/sounds/start game.ogg')
+
 /*---------------------------- Variables (state) ----------------------------*/
+
 let playerScore = 0
 let speed = 700
 let timeInterval = setInterval(startTime, 1000 - speed)
@@ -105,6 +108,7 @@ const snake = {
 }
 
 /*-------------------------------- Functions --------------------------------*/
+
 function renderApple(){
     appleLocation = parseInt(Math.random()*400)
     while(walls.includes(appleLocation) || snake.headPosition ===appleLocation || snake.tailPosition.includes(appleLocation)){
@@ -130,7 +134,6 @@ function startTime(){
 }
 
 function renderSnakeApple(){
-    
     sqrEls[appleLocation].className ='sqr animate__animated animate__fadeIn'
     sqrEls[appleLocation].style.backgroundImage="url('./assets/images/apple.png')"
     snake.tailPosition.forEach(piece=> sqrEls[piece].style.backgroundImage= "url('./assets/images/skin.png')")
@@ -165,8 +168,7 @@ function rotateHead(dir){
     else if (dir === 'r') sqrEls[snake.headPosition].style.transform = 'rotate(90deg)'
 }
 
-function init(){
-     
+function init(){     
     sqrEls.forEach(sqr=> {
         sqr.style.backgroundImage=''
         sqr.className = 'sqr'
@@ -184,6 +186,7 @@ function init(){
     snake.tailPosition = initialPosition.slice(1)
     timeInterval = setInterval(startTime, 1000 - speed)
 }
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 sqrEls.forEach(sqr => {if(walls.includes(parseInt(sqr.id))) sqr.style.backgroundColor='black'})
