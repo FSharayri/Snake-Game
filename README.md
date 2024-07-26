@@ -46,17 +46,17 @@ For the initial planning material [Click here](https://docs.google.com/document/
 
 ## **Future Enhancements**
 - high score implementation
-- sound effects 
 - confetti effect upon beating the high score 
 - snake opens its mouth around the apple squares
 - speed up when reaching certain checkpoints in score
-- visual adjustments to snake and apple
-- implementing how-to-play 
 - implementing pause logic with button and keystroke
-- adding animation to Apple appearing on board
-- change the font to fit with the theme
+
 
 
 # Attributions
-### - Animations: [Animate.css](https://animate.style/)
-### - Fonts: [Google Fonts]('https://fonts.googleapis.com/css2?family=Gugi&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap')
+- ###  Animations: [Animate.css](https://animate.style/)
+- ###  Fonts: [Google Fonts]('https://fonts.googleapis.com/css2?family=Gugi&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap')
+- ###  Sound Effects:
+    - #### Eat sound effect: [Apple_Crunch_02.wav by Koops -- License: Attribution 4.0](https://freesound.org/s/20265/)
+    - #### Game over sound effect: [negative_beeps.wav by themusicalnomad -- License: Creative Commons 0](https://freesound.org/s/253886/)
+    - #### Start Game sound effect: [Game Start by plasterbrain -- License: Creative Commons 0](https://freesound.org/s/243020/)

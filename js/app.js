@@ -49,6 +49,9 @@ let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
 
 const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,snakeInitialPos+3]
 
+const gameOverSound = new Audio('./assets/sounds/game over.wav')
+const eatSound = new Audio('./assets/sounds/eat.wav')
+const startGameSound = new Audio('./assets/sounds/start game.ogg')
 /*---------------------------- Variables (state) ----------------------------*/
 let playerScore = 0
 let speed = 700
@@ -56,6 +59,7 @@ let timeInterval = setInterval(startTime, 1000 - speed)
 let walls =[]
 let appleOnBoard = false
 let snakeEatsApple = false
+startGameSound.play()
 for (let index = 0; index < boardlength; index++) {
     walls.push(index)
     walls.push(index+boardSize-boardlength)
@@ -75,6 +79,7 @@ const snake = {
     // this grow function will be called whenever the snake eats a piece, and it depends on the direction element in the snake object, which will be manipulated later
     grow(){
         this.tailPosition.push(this.tailPosition.at(-1))
+        eatSound.play()
     },
     move(){
         let lastIdx 
@@ -178,11 +183,10 @@ function handleKeyDown(key){
 }
 
 function lose(){
-    
     clearInterval(timeInterval)
     textEl.textContent = 'GAME OVER'
-    textEl.className ='animate__animated animate__bounce'
-    
+    textEl.className ='animate__animated animate__bounce' 
+    gameOverSound.play()
 }
 
 function rotateHead(dir){
@@ -193,11 +197,14 @@ function rotateHead(dir){
 }
 
 function init(){
+
     sqrEls.forEach(sqr=> sqr.style.backgroundImage='')
     clearInterval(timeInterval)
     renderApple()
     playerScore = 0
+    
     textEl.textContent ='Eat the Apples'
+    startGameSound.play()
     textEl.className='animate__animated animate__flash'
     snake.direction = 'l'
     snake.headPosition = initialPosition[0]
