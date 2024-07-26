@@ -33,6 +33,7 @@ body{
     width: 70vh;
     aspect-ratio: 1/1;
     background-image: url('../assets/images/board.png');
+    alt: 'Snake field checkered board Image';
     background-size:contain;
     
 }
