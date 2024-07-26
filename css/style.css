@@ -44,7 +44,7 @@ body{
 #level-up-message {
     font-size: larger;
     font-weight: bolder;
-    animation: backInRight; /* referring directly to the animation's @keyframe declaration */
+    animation: backInDown; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 2s;
   
 }

@@ -26,6 +26,7 @@ let snakeInitialPos = Math.round(boardSize/2 -boardlength*0.25)
 /*-------------------------------- Constants --------------------------------*/
 
 const initialPosition = [snakeInitialPos,snakeInitialPos+1,snakeInitialPos+2,snakeInitialPos+3]
+// sound effects 
 const gameOverSound = new Audio('./assets/sounds/game over.wav')
 const eatSound = new Audio('./assets/sounds/eat.wav')
 const startGameSound = new Audio('./assets/sounds/start game.ogg')
@@ -158,10 +159,8 @@ function checkforEat(){
             confetti.start(600)
             levelUpSound.play()
             levelUpMessageEl.style.display = ''
-        } 
-        else {
-            levelUpMessageEl.style.display = 'none'
-        }
+            setTimeout(()=>{levelUpMessageEl.style.display = 'none'},2500)
+        }   
     }
 }
 
