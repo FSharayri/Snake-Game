@@ -31,9 +31,10 @@ const startGameSound = new Audio('./assets/sounds/start game.ogg')
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let playerScore = 0
-let speed = 700
-let timeInterval = setInterval(startTime, 1000 - speed)
+let playerScore 
+let speed
+let timeInterval 
+
 let walls =[]
 let appleOnBoard = false
 let snakeEatsApple = false
@@ -178,6 +179,7 @@ function init(){
     renderApple()
     playerScore = 0 
     lost = false 
+    speed = 700
     textEl.textContent ='Eat the Apples'
     startGameSound.play()
     textEl.className='animate__animated animate__flash'
@@ -185,6 +187,7 @@ function init(){
     snake.headPosition = initialPosition[0]
     snake.tailPosition = initialPosition.slice(1)
     timeInterval = setInterval(startTime, 1000 - speed)
+    restartEl.textContent = 'Restart'
 }
 
 /*----------------------------- Event Listeners -----------------------------*/
