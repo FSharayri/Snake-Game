@@ -118,12 +118,31 @@ function renderApple(){
     appleOnBoard = true 
 }
 
-function startTime(){
-    if (! appleOnBoard) renderApple() 
-    snake.move()
-    renderSnakeApple()
-    snakeEatsApple = snake.headPosition === appleLocation
-    if (snakeEatsApple){
+function levelUp(){
+    if (playerScore >34) {
+        speed= 960
+        clearInterval(timeInterval)
+        timeInterval = setInterval(startTime, 1000 - speed)
+    }
+    else if (playerScore >24) {
+        speed= 900
+        clearInterval(timeInterval)
+        timeInterval = setInterval(startTime, 1000 - speed)
+    }
+    else if (playerScore >14) {
+        speed= 800
+        clearInterval(timeInterval)
+        timeInterval = setInterval(startTime, 1000 - speed)
+    }
+    else if (playerScore >6) {
+        speed= 650
+        clearInterval(timeInterval)
+        timeInterval = setInterval(startTime, 1000 - speed)
+        
+    }
+}
+function checkforEat(){ 
+    if (snake.headPosition === appleLocation){
         playerScore++
         sqrEls[appleLocation].style.backgroundColor = ''     
         sqrEls[appleLocation].className = 'sqr'       
@@ -131,7 +150,19 @@ function startTime(){
         snake.grow()
         snake.grow()  
     }
+}
+
+function updateScore(){
     scoreEl.textContent = `Score: ${playerScore}`
+}
+
+function startTime(){
+    levelUp()
+    if (! appleOnBoard) renderApple() 
+    snake.move()
+    renderSnakeApple()
+    checkforEat()
+    updateScore()
 }
 
 function renderSnakeApple(){
@@ -143,14 +174,18 @@ function renderSnakeApple(){
 }
 
 function handleKeyDown(key){
-    if (key.key ==='ArrowUp' && snake.direction!=='d' )
+    if (key.key ==='ArrowUp' && snake.direction!=='d' ){
         snake.direction='u'
-    if (key.key ==='ArrowDown' && snake.direction!=='u')
+    }
+    if (key.key ==='ArrowDown' && snake.direction!=='u'){
         snake.direction='d'
-    if (key.key ==='ArrowLeft' && snake.direction!=='r')
+    }
+    if (key.key ==='ArrowLeft' && snake.direction!=='r'){
         snake.direction='l'
-    if (key.key ==='ArrowRight' && snake.direction!=='l')
+    }
+    if (key.key ==='ArrowRight' && snake.direction!=='l'){
         snake.direction='r'  
+    }
 }
 
 function lose(){
@@ -160,6 +195,7 @@ function lose(){
     textEl.className ='animate__animated animate__bounce' 
     gameOverSound.play()
     lost = true
+    
 }
 
 function rotateHead(dir){
@@ -179,7 +215,7 @@ function init(){
     renderApple()
     playerScore = 0 
     lost = false 
-    speed = 700
+    speed = 500
     textEl.textContent ='Eat the Apples'
     startGameSound.play()
     textEl.className='animate__animated animate__flash'
