@@ -56,6 +56,7 @@ For the initial planning material [Click here](https://docs.google.com/document/
 # Attributions
 - ###  Animations: [Animate.css](https://animate.style/)
 - ###  Fonts: [Google Fonts]('https://fonts.googleapis.com/css2?family=Gugi&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap')
+- ### Confetti: [Confetti](https://github.com/SEI-Remote/confetti)
 - ###  Sound Effects:
     - #### Eat sound effect: [Apple_Crunch_02.wav by Koops -- License: Attribution 4.0](https://freesound.org/s/20265/)
     - #### Game over sound effect: [negative_beeps.wav by themusicalnomad -- License: Creative Commons 0](https://freesound.org/s/253886/)
