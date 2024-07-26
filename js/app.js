@@ -156,7 +156,7 @@ function checkforEat(){
         snake.grow()
         snake.grow() 
         if (playerScore ===7 ||playerScore ===15||playerScore ===25||playerScore ===35) {
-            confetti.start(600)
+            confetti.start(200)
             levelUpSound.play()
             levelUpMessageEl.style.display = ''
             setTimeout(()=>{levelUpMessageEl.style.display = 'none'},2500)

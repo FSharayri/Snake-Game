@@ -42,7 +42,7 @@ body{
     font-size: small;
 }
 #level-up-message {
-    font-size: larger;
+    font-size: large;
     font-weight: bolder;
     animation: backInDown; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 2s;
@@ -68,7 +68,7 @@ body{
     gap: 10vw;
     padding-top: 10px;
     width: 60vh;
-    font-size: larger;
+    font-size: x-large;
     
 }
 
